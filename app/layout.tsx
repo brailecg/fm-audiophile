@@ -1,4 +1,5 @@
 import { GeistSans } from "geist/font/sans";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -7,9 +8,11 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "FM - Audiophile",
+  description: "Best place for all your audio needs.",
 };
+
+const manrope = Manrope({ subsets: ["cyrillic"] });
 
 export default function RootLayout({
   children,
@@ -17,11 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
+    <html lang="en" className={manrope.className}>
+      <body className="">
+        <main className="">{children}</main>
       </body>
     </html>
   );
