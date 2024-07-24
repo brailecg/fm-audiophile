@@ -1,6 +1,7 @@
-import { GeistSans } from "geist/font/sans";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -20,9 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${manrope.className} `}>
-      <body className=" dark:bg-black">
-        <main className="">{children}</main>
+    <html lang="en" className={`${manrope.className}  `}>
+      <body className="mx-auto flex  flex-col ">
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

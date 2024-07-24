@@ -1,6 +1,15 @@
 import Link from "next/link";
 import clsx from "clsx";
 
+{
+  /* <AppButton variant="primary">SEE PRODUCT</AppButton>
+<AppButton variant="secondary">SEE PRODUCT</AppButton>
+<AppButton variant="tertiary">
+  SHOP{" "}
+  <ChevronRightIcon className=" text-main-orange stroke-[3px] size-4" />
+</AppButton> */
+}
+
 const variantStyles = {
   primary: "bg-main-orange text-zinc-100 hover:bg-light-orange",
   secondary:

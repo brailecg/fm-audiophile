@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header-text {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: clamp(2.5rem, 3vw, 3.625rem);
+  letter-spacing: 0.125em;
+  font-weight: 700;
+}

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   darkMode: "class",
   content: [
@@ -6,12 +7,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      xs: "475px",
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         "main-orange": "hsl(22, 65%, 57%)",
         "light-orange": "hsl(21, 94%, 75%)",
         "main-grey": "hsl(0, 0%, 95%)",
         "light-grey": "hsl(0, 0%, 98%)",
+        "secondary-grey": "hsl(0, 0%, 100%)",
       },
       fontSize: {
         "app-h1": [
@@ -70,6 +76,14 @@ module.exports = {
             fontWeight: "400",
           },
         ],
+        "app-overline-tablet": [
+          "0.8rem",
+          {
+            lineHeight: "1.188rem",
+            letterSpacing: "0.5rem",
+            fontWeight: "400",
+          },
+        ],
         "app-subtitle": [
           "0.813rem",
           {
@@ -82,6 +96,14 @@ module.exports = {
           "0.938rem",
           {
             lineHeight: "1.563rem",
+            letterSpacing: "0.063rem",
+            fontWeight: "500",
+          },
+        ],
+        "app-body-tablet": [
+          "0.8rem",
+          {
+            lineHeight: "1.2rem",
             letterSpacing: "0.063rem",
             fontWeight: "500",
           },
