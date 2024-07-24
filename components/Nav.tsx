@@ -5,7 +5,7 @@ import React, {
   SetStateAction,
   useState,
 } from "react";
-import { Container, ContainerInner, ContainerOuter } from "./Container";
+import { Container, ContainerOuter } from "./Container";
 
 import Image, { StaticImageData } from "next/image";
 import { Bars3Icon, ChevronRightIcon } from "@heroicons/react/24/outline";
@@ -19,10 +19,26 @@ import { AppButton } from "./AppButton";
 const DeskTopLinks = () => {
   return (
     <ul className="hidden md:flex gap-2 tracking-[2px] lg:gap-4 text-sm font-semibold ">
-      <li>HOME</li>
-      <li>HEADPHONES</li>
-      <li>SPEAKERS</li>
-      <li>EARPHONES</li>
+      <li>
+        <AppButton href={"#"} variant="tertiary" className="px-0">
+          HOME
+        </AppButton>
+      </li>
+      <li>
+        <AppButton href={"#"} variant="tertiary" className="px-0">
+          HEADPHONES
+        </AppButton>
+      </li>
+      <li>
+        <AppButton href={"#"} variant="tertiary" className="px-0">
+          SPEAKERS
+        </AppButton>
+      </li>
+      <li>
+        <AppButton href={"#"} variant="tertiary" className="px-0">
+          EARPHONES
+        </AppButton>
+      </li>
     </ul>
   );
 };

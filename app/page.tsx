@@ -5,7 +5,7 @@ import { ChevronRightIcon } from "@heroicons/react/24/outline";
 export default async function Index() {
   return (
     <Container className="">
-      <div></div>
+      <div>main content</div>
     </Container>
   );
 }
