@@ -5,6 +5,8 @@ import React, {
   SetStateAction,
   useState,
 } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { Container, ContainerOuter } from "./Container";
 
 import Image, { StaticImageData } from "next/image";
@@ -50,7 +52,7 @@ const MobileLinks = ({
 }) => {
   return (
     <button
-      onClick={setIsNavOpen as unknown as MouseEventHandler<HTMLButtonElement>}
+      onClick={() => setIsNavOpen((prev) => !prev)}
       className="flex md:hidden">
       <Bars3Icon className=" size-6" />
     </button>
@@ -64,7 +66,10 @@ type MobileNavLinksType = {
 };
 const MobileNavLinks = ({ image, name, link }: MobileNavLinksType) => {
   return (
-    <div className="relative grid justify-items-center bg-main-grey rounded-lg  mt-16 max-w-72 min-w-56 mx-8">
+    <AppButton
+      href="#"
+      variant="empty"
+      className="relative grid justify-items-center bg-main-grey rounded-lg  mt-16 max-w-72 min-w-56 mx-8">
       <div className=" absolute size-28 -top-14">
         <Image src={image} alt="name" />
       </div>
@@ -77,7 +82,7 @@ const MobileNavLinks = ({ image, name, link }: MobileNavLinksType) => {
           <ChevronRightIcon className=" text-main-orange stroke-[3px] size-4" />
         </AppButton>
       </div>
-    </div>
+    </AppButton>
   );
 };
 
@@ -101,13 +106,22 @@ const Nav = () => {
         </div>
       </Container>
 
-      <ContainerOuter className="absolute z-50 pb-8 w-full hidden bg-light-grey ">
-        <div className="flex gap-2 flex-wrap justify-center ">
-          <MobileNavLinks image={Earphones} name="Earphones" link="#" />
-          <MobileNavLinks image={Earphones} name="Earphones" link="#" />
-          <MobileNavLinks image={Earphones} name="Earphones" link="#" />
-        </div>
-      </ContainerOuter>
+      <AnimatePresence>
+        {isNavOpen && (
+          <motion.div
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            exit={{ y: -100 }}>
+            <ContainerOuter className=" pb-8 w-full  bg-light-grey ">
+              <div className="flex gap-2 flex-wrap justify-center ">
+                <MobileNavLinks image={Earphones} name="Earphones" link="#" />
+                <MobileNavLinks image={Earphones} name="Earphones" link="#" />
+                <MobileNavLinks image={Earphones} name="Earphones" link="#" />
+              </div>
+            </ContainerOuter>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

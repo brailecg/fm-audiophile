@@ -15,6 +15,7 @@ const variantStyles = {
   secondary:
     "bg-white border border-black font-medium text-zinc-900 hover:bg-zinc-100  hover:bg-black hover:text-white",
   tertiary: "border-none hover:text-main-orange",
+  empty: "",
 };
 
 type ButtonProps = {

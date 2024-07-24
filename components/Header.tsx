@@ -9,7 +9,7 @@ export default function Header() {
     <div className=" bg-black ">
       <Nav />
       <Container>
-        <header className=" relative flex justify-center items-center">
+        <header className="z-40 relative flex justify-center items-center">
           <div className="text-center absolute z-40  content-center text-white xs:w-4/5  grid gap-2 sm:gap-6 md:self-center md:gap-3 lg:gap-6 md:z-0 md:relative md:text-start  flex-1 md:pt-0">
             <div className=" text-gray-400 text-app-overline-tablet lg:text-app-overline">
               NEW PRODUCT
