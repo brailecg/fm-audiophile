@@ -3,9 +3,8 @@ import Image from "next/image";
 
 import { Container } from "./Container";
 import AppLogo from "../public/logo.svg";
-import FacebookIcon from "./Icons/FacebookIcon";
-import TwitterIcon from "./Icons/TwitterIcon";
-import InstagramIcon from "./Icons/InstagramIcon";
+
+import { FacebookIcon, TwitterIcon, InstagramIcon } from "./Icons";
 import { AppButton } from "./AppButton";
 
 const FooterLinks = () => {

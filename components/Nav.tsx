@@ -1,21 +1,17 @@
 "use client";
-import React, {
-  Dispatch,
-  MouseEventHandler,
-  SetStateAction,
-  useState,
-} from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-import { Container, ContainerOuter } from "./Container";
-
 import Image, { StaticImageData } from "next/image";
 import { Bars3Icon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
-import AppLogo from "../public/logo.svg";
-import CartIcon from "../public/icon-cart.svg";
-
-import Earphones from "../public/earphones.png";
+import { Container, ContainerOuter } from "./Container";
+import {
+  AppLogo,
+  CartIcon,
+  Earphones,
+  Headphones,
+  Speakers,
+} from "./public-images";
 import { AppButton } from "./AppButton";
 
 const DeskTopLinks = () => {
@@ -75,7 +71,7 @@ const MobileNavLinks = ({ image, name, link }: MobileNavLinksType) => {
       </div>
       <div className=" w-56 h-40 flex flex-col items-center justify-end">
         <p className=" text-app-body uppercase text-black">{name}</p>
-        <AppButton variant="tertiary" href={link}>
+        <AppButton variant="tertiary">
           <span className="uppercase text-app-subtitle text-black/50">
             shop
           </span>
@@ -115,8 +111,8 @@ const Nav = () => {
             <ContainerOuter className=" pb-8 w-full  bg-light-grey ">
               <div className="flex gap-2 flex-wrap justify-center ">
                 <MobileNavLinks image={Earphones} name="Earphones" link="#" />
-                <MobileNavLinks image={Earphones} name="Earphones" link="#" />
-                <MobileNavLinks image={Earphones} name="Earphones" link="#" />
+                <MobileNavLinks image={Headphones} name="Earphones" link="#" />
+                <MobileNavLinks image={Speakers} name="Earphones" link="#" />
               </div>
             </ContainerOuter>
           </motion.div>
