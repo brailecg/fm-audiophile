@@ -14,7 +14,9 @@ export default function Header() {
             <div className=" text-gray-400 text-app-overline-tablet lg:text-app-overline">
               NEW PRODUCT
             </div>
-            <h1 className=" uppercase header-text">XX9 mark II headphones</h1>
+            <h1 className=" uppercase header-text lg:leading-tight">
+              XX9 mark II headphones
+            </h1>
             <p className="mx-auto sm:w-[60%] text-[#fff] text-sub md:w-full text-app-body-tablet lg:text-app-body">
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.

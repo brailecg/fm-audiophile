@@ -63,7 +63,7 @@ type MobileNavLinksType = {
 const MobileNavLinks = ({ image, name, link }: MobileNavLinksType) => {
   return (
     <AppButton
-      href="#"
+      href={link}
       variant="empty"
       className="relative grid justify-items-center bg-main-grey rounded-lg  mt-16 max-w-72 min-w-56 mx-8">
       <div className=" absolute size-28 -top-14">
