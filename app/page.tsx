@@ -28,7 +28,6 @@ const MainProduct = ({ image, name, link }: MainProductType) => {
   return (
     <AppButton
       href={link}
-      variant="empty"
       className="relative flex flex-col bg-main-grey rounded-lg w-full h-44 py-6 md:max-w-full">
       <div className="absolute -top-14 md:-top-20  w-[101px] md:w-[120px]">
         <Image

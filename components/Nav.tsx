@@ -64,7 +64,6 @@ const MobileNavLinks = ({ image, name, link }: MobileNavLinksType) => {
   return (
     <AppButton
       href={link}
-      variant="empty"
       className="relative grid justify-items-center bg-main-grey rounded-lg  mt-16 max-w-72 min-w-56 mx-8">
       <div className=" absolute size-28 -top-14">
         <Image src={image} alt="name" />
@@ -89,16 +88,20 @@ const Nav = () => {
     <div className="relative">
       <Container>
         <div className="flex text-white justify-between items-center py-4 mb-4 sm:py-6 border-b border-gray-500">
-          <div className="order-2 flex-1 md:order-first md:flex-auto  ">
+          <AppButton
+            href={"/"}
+            className="order-2 flex-1 md:order-first md:flex-auto  ">
             <Image src={AppLogo} alt="app logo" />
-          </div>
+          </AppButton>
           <div className="order-first flex-1 md:order-2 md:flex-auto  ">
             <DeskTopLinks />
             <MobileLinks setIsNavOpen={setIsNavOpen} />
           </div>
-          <div className="order-last flex-1  md:flex-auto  flex justify-end">
+          <AppButton
+            href={"#"}
+            className="order-last flex-1  md:flex-auto  flex justify-end">
             <Image src={CartIcon} alt="cart icon" />
-          </div>
+          </AppButton>
         </div>
       </Container>
 

@@ -11,11 +11,12 @@ import clsx from "clsx";
 }
 
 const variantStyles = {
-  primary: "bg-main-orange text-zinc-100 hover:bg-light-orange",
+  primary:
+    "inline-flex items-center gap-2 justify-center py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-semibold text-app-subtitle bg-main-orange text-zinc-100 hover:bg-light-orange",
   secondary:
-    "bg-white border border-black font-medium text-zinc-900 hover:bg-zinc-100  hover:bg-black hover:text-white",
+    "inline-flex items-center gap-2 justify-center py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-semibold text-app-subtitle bg-white border border-black font-medium text-zinc-900 hover:bg-zinc-100  hover:bg-black hover:text-white",
   tertiary: "border-none hover:text-main-orange",
-  empty: "",
+  default: "",
 };
 
 type ButtonProps = {
@@ -26,15 +27,11 @@ type ButtonProps = {
 );
 
 export function AppButton({
-  variant = "primary",
+  variant = "default",
   className,
   ...props
 }: ButtonProps) {
-  className = clsx(
-    "inline-flex items-center gap-2 justify-center py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-semibold text-app-subtitle",
-    variantStyles[variant],
-    className
-  );
+  className = clsx(variantStyles[variant], className);
 
   return typeof props.href === "undefined" ? (
     <button className={className} {...props} />
