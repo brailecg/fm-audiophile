@@ -1,7 +1,7 @@
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -22,8 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${manrope.className}  `}>
-      <body className="mx-auto flex  flex-col ">
-        <Header />
+      <body>
+        <Nav />
         <main>{children}</main>
         <Footer />
       </body>

@@ -1,3 +1,4 @@
+import HeaderHero from "../../public/header-no-bg.png";
 import AppLogo from "../../public/logo.svg";
 import CartIcon from "../../public/icon-cart.svg";
 import Earphones from "../../public/earphones.png";
@@ -14,6 +15,7 @@ import AudioGear from "../../public/audio-gear.png";
 import AudioGearSm from "../../public/audio-gear-sm.png";
 
 export {
+  HeaderHero,
   AppLogo,
   CartIcon,
   Earphones,

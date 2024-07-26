@@ -2,6 +2,7 @@ import Image, { StaticImageData } from "next/image";
 
 import { Container } from "@/components/Container";
 import {
+  HeaderHero,
   Earphones,
   Headphones,
   Speakers,
@@ -22,6 +23,42 @@ type MainProductType = {
   image: StaticImageData;
   name: string;
   link: string;
+};
+
+const HomeHeaderSection = () => {
+  return (
+    <Container className="bg-black ">
+      <header className="z-40 relative flex justify-center items-center">
+        <div className="text-center absolute z-40  content-center text-white xs:w-4/5  grid gap-2 sm:gap-6 md:self-center md:gap-3 lg:gap-6 md:z-0 md:relative md:text-start  flex-1 md:pt-0">
+          <div className=" text-gray-400 text-app-overline-tablet lg:text-app-overline">
+            NEW PRODUCT
+          </div>
+          <h1 className=" uppercase header-text lg:leading-tight">
+            XX9 mark II headphones
+          </h1>
+          <p className="mx-auto sm:w-[60%] text-[#fff] text-sub md:w-full text-app-body-tablet lg:text-app-body">
+            Experience natural, lifelike audio and exceptional build quality
+            made for the passionate music enthusiast.
+          </p>
+          <AppButton
+            variant="primary"
+            className=" justify-self-center hover:bg-light-orange lg:px-7 lg:py-4 w-fit text-xs md:justify-self-start">
+            SEE PRODUCT
+          </AppButton>
+        </div>
+        <div className="p-2 sm:p-8 lg:p-12 z-30 flex-1 lg:w-1/2 flex justify-center items-center relative">
+          <div
+            style={{
+              background:
+                "radial-gradient( circle, rgba(2, 0, 36, 1) 0%, rgb(50, 52, 54) 0%, rgba(0, 0, 0, 1) 80% )",
+            }}
+            className="size-[99%]  absolute "
+          />
+          <Image className="relative" src={HeaderHero} alt="hero image" />
+        </div>
+      </header>
+    </Container>
+  );
 };
 
 const MainProduct = ({ image, name, link }: MainProductType) => {
@@ -168,35 +205,45 @@ const FeaturedEarphonesSection = () => {
   );
 };
 
+const AudioGearSection = () => {
+  return (
+    <div className="mt-24 flex flex-col lg:flex-row lg:gap-4">
+      <div className=" xs:hidden lg:flex lg:flex-1 lg:order-last lg:min-w-[50%]">
+        <Image src={AudioGear} alt="AudioGear" className="rounded-lg" />
+      </div>
+      <div className="hidden xs:flex lg:hidden">
+        <Image src={AudioGearSm} alt="AudioGearSm" className="rounded-lg" />
+      </div>
+      <div className=" mt-8 flex flex-col gap-4 text-center lg:flex-1 lg:text-start lg:my-auto lg:max-w-[50%] lg:pr-24">
+        <h1 className="uppercase text-app-h4  xs:text-app-h3">
+          Bringing you the <span className="text-main-orange">best</span> audio
+          gear
+        </h1>
+        <p className=" text-sm text-black/50 font-normal ">
+          Located at the heart of New York City, Audiophile is the premier store
+          for high end headphones, earphones, speakers, and audio accessories.
+          We have a large showroom and luxury demonstration rooms available for
+          you to browse and experience a wide range of our products. Stop by our
+          store to meet some of the fantastic people who make Audiophile the
+          best place to buy your portable audio equipment.
+        </p>
+      </div>
+    </div>
+  );
+};
+
 export default async function Index() {
   return (
-    <Container className=" mt-36 mb-24">
-      <HomeMainProduct />
-      <FeaturedSpeakerOne />
-      <FeaturedSpeakerTwo />
-      <FeaturedEarphonesSection />
-      <div className="mt-24 flex flex-col lg:flex-row lg:gap-4">
-        <div className=" xs:hidden lg:flex lg:flex-1 lg:order-last lg:min-w-[50%]">
-          <Image src={AudioGear} alt="AudioGear" className="rounded-lg" />
-        </div>
-        <div className="hidden xs:flex lg:hidden">
-          <Image src={AudioGearSm} alt="AudioGearSm" className="rounded-lg" />
-        </div>
-        <div className=" mt-8 flex flex-col gap-4 text-center lg:flex-1 lg:text-start lg:my-auto lg:max-w-[50%] lg:pr-24">
-          <h1 className="uppercase text-app-h4  xs:text-app-h3">
-            Bringing you the <span className="text-main-orange">best</span>{" "}
-            audio gear
-          </h1>
-          <p className=" text-sm text-black/50 font-normal ">
-            Located at the heart of New York City, Audiophile is the premier
-            store for high end headphones, earphones, speakers, and audio
-            accessories. We have a large showroom and luxury demonstration rooms
-            available for you to browse and experience a wide range of our
-            products. Stop by our store to meet some of the fantastic people who
-            make Audiophile the best place to buy your portable audio equipment.
-          </p>
-        </div>
-      </div>
-    </Container>
+    <>
+      <HomeHeaderSection />
+
+      <Container className=" mt-36 mb-24">
+        <HomeMainProduct />
+        <FeaturedSpeakerOne />
+        <FeaturedSpeakerTwo />
+        <FeaturedEarphonesSection />
+        <AudioGearSection />
+      </Container>
+    </>
   );
 }
