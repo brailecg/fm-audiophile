@@ -28,7 +28,7 @@ const MainProduct = ({ image, name, link }: MainProductType) => {
   return (
     <AppButton
       href={link}
-      className="relative flex flex-col bg-main-grey rounded-lg w-full h-44 py-6 md:max-w-full">
+      className="group relative flex flex-col items-center bg-main-grey rounded-lg w-full h-44 py-6 md:max-w-full">
       <div className="absolute -top-14 md:-top-20  w-[101px] md:w-[120px]">
         <Image
           src={image}
@@ -40,7 +40,7 @@ const MainProduct = ({ image, name, link }: MainProductType) => {
       <div className="flex flex-col h-full justify-end gap-4">
         <p className=" text-app-body uppercase text-black">{name}</p>
         <div className="flex justify-center items-center">
-          <span className="uppercase  text-app-subtitle text-black/50">
+          <span className="uppercase  text-app-subtitle text-black/50 group-hover:text-main-orange">
             shop
           </span>
           <ChevronRightIcon className=" text-main-orange stroke-[3px] size-4" />
@@ -108,7 +108,7 @@ const FeaturedSpeakerTwo = () => {
         </h3>
         <AppButton
           variant="secondary"
-          className=" w-40 h-12 bg-transparent hover:!bg-black">
+          className=" w-40 h-12 !bg-transparent hover:!bg-black">
           SEE PRODUCT
         </AppButton>
       </div>
