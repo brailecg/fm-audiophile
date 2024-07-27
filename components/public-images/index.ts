@@ -13,6 +13,9 @@ import FeaturedEarphones from "../../public/featured-earphones.png";
 import FeaturedEarphonesSm from "../../public/featured-earphones-sm.png";
 import AudioGear from "../../public/audio-gear.png";
 import AudioGearSm from "../../public/audio-gear-sm.png";
+import HeadphonesMark2 from "../../public/headphones-xx99-mark2.png";
+import HeadphonesMark1 from "../../public/headphones-xx99-mark1.png";
+import HeadphonesXx59 from "../../public/headphones-xx59.png";
 
 export {
   HeaderHero,
@@ -30,4 +33,7 @@ export {
   FeaturedEarphonesSm,
   AudioGear,
   AudioGearSm,
+  HeadphonesMark1,
+  HeadphonesMark2,
+  HeadphonesXx59,
 };

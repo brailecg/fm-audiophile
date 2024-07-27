@@ -18,12 +18,12 @@ const DeskTopLinks = () => {
   return (
     <ul className="hidden md:flex gap-2 tracking-[2px] lg:gap-4 text-sm font-semibold ">
       <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
+        <AppButton href={"/"} variant="tertiary" className="px-0">
           HOME
         </AppButton>
       </li>
       <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
+        <AppButton href={"/headphones"} variant="tertiary" className="px-0">
           HEADPHONES
         </AppButton>
       </li>
