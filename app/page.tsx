@@ -82,7 +82,7 @@ const FeaturedSpeakerOne = () => {
         </p>
         <AppButton
           variant="secondary"
-          className="z-20 h-12 w-40 hover:!bg-[#4C4C4C] hover:!border-[#4C4C4C] !bg-black !text-white text-xs">
+          className="z-20 h-12 w-40 hover:bg-[#4C4C4C] hover:border-[#4C4C4C] bg-black text-white text-xs">
           SEE PRODUCT
         </AppButton>
       </div>
@@ -99,7 +99,7 @@ const FeaturedSpeakerTwo = () => {
         </h3>
         <AppButton
           variant="secondary"
-          className=" w-40 h-12 !bg-transparent hover:!bg-black">
+          className=" w-40 h-12 bg-transparent hover:bg-black">
           SEE PRODUCT
         </AppButton>
       </div>
@@ -151,7 +151,7 @@ const FeaturedEarphonesSection = () => {
         </h3>
         <AppButton
           variant="secondary"
-          className=" w-40 h-12 bg-transparent hover:!bg-black">
+          className=" w-40 h-12 bg-transparent hover:bg-black">
           SEE PRODUCT
         </AppButton>
       </div>

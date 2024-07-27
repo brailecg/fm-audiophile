@@ -11,22 +11,22 @@ const FooterLinks = () => {
   return (
     <ul className="flex gap-4 flex-col items-center tracking-[2px] md:gap-8 text-sm font-semibold md:flex-row">
       <li>
-        <AppButton href={"#"} variant="tertiary" className="!px-0">
+        <AppButton href={"#"} variant="tertiary" className="px-0">
           HOME
         </AppButton>
       </li>
       <li>
-        <AppButton href={"#"} variant="tertiary" className="!px-0">
+        <AppButton href={"#"} variant="tertiary" className="px-0">
           HEADPHONES
         </AppButton>
       </li>
       <li>
-        <AppButton href={"#"} variant="tertiary" className="!px-0">
+        <AppButton href={"#"} variant="tertiary" className="px-0">
           SPEAKERS
         </AppButton>
       </li>
       <li>
-        <AppButton href={"#"} variant="tertiary" className="!px-0">
+        <AppButton href={"#"} variant="tertiary" className="px-0">
           EARPHONES
         </AppButton>
       </li>

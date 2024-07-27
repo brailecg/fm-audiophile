@@ -1,14 +1,5 @@
 import Link from "next/link";
-import clsx from "clsx";
-
-{
-  /* <AppButton variant="primary">SEE PRODUCT</AppButton>
-<AppButton variant="secondary">SEE PRODUCT</AppButton>
-<AppButton variant="tertiary">
-  SHOP{" "}
-  <ChevronRightIcon className=" text-main-orange stroke-[3px] size-4" />
-</AppButton> */
-}
+import { cn } from "@/lib/cn";
 
 const variantStyles = {
   primary:
@@ -31,7 +22,7 @@ export function AppButton({
   className,
   ...props
 }: ButtonProps) {
-  className = clsx(variantStyles[variant], className);
+  className = cn(variantStyles[variant], className);
 
   return typeof props.href === "undefined" ? (
     <button className={className} {...props} />
