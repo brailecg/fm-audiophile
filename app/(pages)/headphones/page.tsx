@@ -90,8 +90,8 @@ const Headphones = () => {
             </React.Fragment>
           ))}
         </div>
-        <MainProducts />
-        <FooterAbout />
+        <MainProducts className=" my-32 md:my-44" />
+        <FooterAbout className="mb-24 md:mb-44 md:mt-44" />
       </Container>
     </div>
   );

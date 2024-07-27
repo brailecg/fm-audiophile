@@ -4,6 +4,7 @@ import { MainProductType } from "../types/appTypes";
 import { AppButton } from "./AppButton";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Earphones, Headphones, Speakers } from "./public-images";
+import { cn } from "@/lib/utils";
 
 const MainProduct = ({ image, name, link }: MainProductType) => {
   return (
@@ -31,9 +32,13 @@ const MainProduct = ({ image, name, link }: MainProductType) => {
   );
 };
 
-const MainProducts = () => {
+const MainProducts = ({ className }: { className: string }) => {
   return (
-    <div className="mt-24 flex flex-col gap-20 sm:flex-row sm:gap-4 items-center justify-center">
+    <div
+      className={cn(
+        "flex flex-col gap-20 sm:flex-row sm:gap-4 items-center justify-center",
+        className
+      )}>
       <MainProduct image={Earphones} name="Earphones" link="#" />
       <MainProduct image={Headphones} name="Headphones" link="#" />
       <MainProduct image={Speakers} name="Speakers" link="#" />

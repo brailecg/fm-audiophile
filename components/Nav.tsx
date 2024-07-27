@@ -13,32 +13,10 @@ import {
   Speakers,
 } from "./public-images";
 import { AppButton } from "./AppButton";
+import PageLinks from "./PageLinks";
 
 const DeskTopLinks = () => {
-  return (
-    <ul className="hidden md:flex gap-2 tracking-[2px] lg:gap-4 text-sm font-semibold ">
-      <li>
-        <AppButton href={"/"} variant="tertiary" className="px-0">
-          HOME
-        </AppButton>
-      </li>
-      <li>
-        <AppButton href={"/headphones"} variant="tertiary" className="px-0">
-          HEADPHONES
-        </AppButton>
-      </li>
-      <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
-          SPEAKERS
-        </AppButton>
-      </li>
-      <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
-          EARPHONES
-        </AppButton>
-      </li>
-    </ul>
-  );
+  return <PageLinks className="hidden md:flex gap-2 lg:gap-4" />;
 };
 
 const MobileLinks = ({

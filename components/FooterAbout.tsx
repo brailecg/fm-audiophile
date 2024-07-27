@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { AudioGear, AudioGearSm } from "./public-images";
-
-const FooterAbout = () => {
+import { cn } from "@/lib/utils";
+const FooterAbout = ({ className }: { className: string }) => {
   return (
-    <div className="mt-24 flex flex-col lg:flex-row lg:gap-4">
+    <div className={cn("flex flex-col lg:flex-row lg:gap-4", className)}>
       <div className=" xs:hidden lg:flex lg:flex-1 lg:order-last lg:min-w-[50%]">
         <Image src={AudioGear} alt="AudioGear" className="rounded-lg" />
       </div>

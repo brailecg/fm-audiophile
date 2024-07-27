@@ -165,11 +165,11 @@ export default async function Index() {
       <HomeHeaderSection />
 
       <Container className=" mt-36">
-        <MainProducts />
+        <MainProducts className=" my-32 md:my-44" />
         <FeaturedSpeakerOne />
         <FeaturedSpeakerTwo />
         <FeaturedEarphonesSection />
-        <FooterAbout />
+        <FooterAbout className="mb-24 md:mb-44 md:mt-44" />
       </Container>
     </>
   );

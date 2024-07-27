@@ -6,31 +6,11 @@ import AppLogo from "../public/logo.svg";
 
 import { FacebookIcon, TwitterIcon, InstagramIcon } from "./Icons";
 import { AppButton } from "./AppButton";
+import PageLinks from "./PageLinks";
 
 const FooterLinks = () => {
   return (
-    <ul className="flex gap-4 flex-col items-center tracking-[2px] md:gap-8 text-sm font-semibold md:flex-row">
-      <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
-          HOME
-        </AppButton>
-      </li>
-      <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
-          HEADPHONES
-        </AppButton>
-      </li>
-      <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
-          SPEAKERS
-        </AppButton>
-      </li>
-      <li>
-        <AppButton href={"#"} variant="tertiary" className="px-0">
-          EARPHONES
-        </AppButton>
-      </li>
-    </ul>
+    <PageLinks className="flex gap-4 flex-col items-center  md:gap-8 md:flex-row" />
   );
 };
 
