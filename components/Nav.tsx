@@ -14,6 +14,8 @@ import {
 } from "./public-images";
 import { AppButton } from "./AppButton";
 import PageLinks from "./PageLinks";
+import AppProduct from "./AppProduct";
+import { numberToPrice } from "@/lib/utils";
 
 const DeskTopLinks = () => {
   return <PageLinks className="hidden md:flex gap-2 lg:gap-4" />;
@@ -61,6 +63,7 @@ const MobileNavLinks = ({ image, name, link }: MobileNavLinksType) => {
 
 const Nav = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
+  const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -74,7 +77,7 @@ const Nav = () => {
             <MobileLinks setIsNavOpen={setIsNavOpen} />
           </div>
           <AppButton
-            href={"#"}
+            onClick={() => setIsCartModalOpen((prev) => !prev)}
             className="order-last flex-1    flex justify-end">
             <Image src={CartIcon} alt="cart icon" />
           </AppButton>
@@ -95,6 +98,48 @@ const Nav = () => {
               </div>
             </Container>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isCartModalOpen && (
+          <Container>
+            <div className="relative flex justify-center items-center ">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="z-50 fixed inset-0 overflow-auto bg-black/40 flex"
+                onClick={() =>
+                  setIsCartModalOpen((prev) => !prev)
+                }></motion.div>
+
+              <motion.div
+                initial={{ x: -100 }}
+                animate={{ x: 0 }}
+                exit={{ x: -100, opacity: 0 }}
+                className="text-white absolute z-50 w-full max-w-[377px] min-h-[488px] top-0 right-0 bg-[#FFFFFF] rounded-lg p-8 flex flex-col gap-8">
+                <div className="flex justify-between">
+                  <h3 className=" text-app-h4 text-black">
+                    CART <span>(3)</span>
+                  </h3>
+                  <AppButton className=" text-black/50 hover:underline">
+                    Remove All
+                  </AppButton>
+                </div>
+                <AppProduct />
+                <div className="flex justify-between">
+                  <span className=" text-black/50">TOTAL</span>
+                  <div className=" text-black font-semibold">
+                    {numberToPrice(2000)}
+                  </div>
+                </div>
+                <AppButton variant="primary" className="w-full">
+                  CHECKOUT
+                </AppButton>
+              </motion.div>
+            </div>
+          </Container>
         )}
       </AnimatePresence>
     </>

@@ -17,6 +17,10 @@ import HeadphonesMark2 from "../../public/headphones-xx99-mark2.png";
 import HeadphonesMark1 from "../../public/headphones-xx99-mark1.png";
 import HeadphonesXx59 from "../../public/headphones-xx59.png";
 
+import HpImg1 from "../../public/hp-img-1.png";
+import HpImg2 from "../../public/hp-img-2.png";
+import HpImg3 from "../../public/hp-img-3.png";
+
 export {
   HeaderHero,
   AppLogo,
@@ -36,4 +40,7 @@ export {
   HeadphonesMark1,
   HeadphonesMark2,
   HeadphonesXx59,
+  HpImg1,
+  HpImg2,
+  HpImg3,
 };
