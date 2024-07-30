@@ -17,6 +17,8 @@ const productsInCart = [
       "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
     image: HeadphonesMark2,
     price: 2999,
+    cartCount: 3,
+    isAvailable: true,
   },
   {
     id: crypto.randomUUID(),
@@ -26,6 +28,8 @@ const productsInCart = [
       "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.",
     image: HeadphonesMark1,
     price: 2799,
+    cartCount: 3,
+    isAvailable: true,
   },
   {
     id: crypto.randomUUID(),
@@ -35,16 +39,18 @@ const productsInCart = [
       "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
     image: HeadphonesXx59,
     price: 28.9,
+    cartCount: 3,
+    isAvailable: true,
   },
 ];
 
-const AppProduct = () => {
+const AppCartProducts = ({ from }: { from?: string }) => {
   return (
     <ul className="grid gap-3">
       {productsInCart?.map((item) => {
         return (
-          <li key={item?.name} className="text-black flex gap-4">
-            <div className="flex gap-4 w-2/3">
+          <li key={item?.name} className="text-black gap-4 grid grid-cols-3">
+            <div className="flex gap-4 col-span-2">
               <div className="flex items-center justify-center bg-main-grey p-4 rounded-lg  w-16 h-16">
                 <Image alt={item.name} src={item?.image} className="w-9" />
               </div>
@@ -57,9 +63,16 @@ const AppProduct = () => {
                 </span>
               </div>
             </div>
-            <div className="flex items-center w-1/3">
-              <CounterInput className="" />
-            </div>
+            {from === undefined && from !== "cartDialog" ? (
+              <div className="text-black/50 font-semibold flex justify-end items-center">
+                {"x"}
+                {item?.cartCount}
+              </div>
+            ) : (
+              <div className="flex items-center">
+                <CounterInput className="" />
+              </div>
+            )}
           </li>
         );
       })}
@@ -67,4 +80,4 @@ const AppProduct = () => {
   );
 };
 
-export default AppProduct;
+export default AppCartProducts;
