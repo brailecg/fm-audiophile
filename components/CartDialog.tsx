@@ -17,7 +17,7 @@ const CartDialog = ({
 
   const handleUpdateCart = () => {
     setIsCartModalOpen(false);
-    router.push("./checkout");
+    router.push("/checkout");
   };
   return (
     <AnimatePresence>
@@ -39,7 +39,7 @@ const CartDialog = ({
               exit={{ x: -100, opacity: 0 }}
               className="text-white absolute z-50 w-full max-w-[377px] min-h-[488px] top-0 right-0 bg-[#FFFFFF] rounded-lg p-8 flex flex-col gap-8">
               <div className="flex justify-between">
-                <h3 className=" text-app-h4 text-black">
+                <h3 className=" text-app-h5 text-black">
                   CART <span>(3)</span>
                 </h3>
                 <AppButton className=" text-black/50 hover:underline">

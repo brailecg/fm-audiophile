@@ -21,6 +21,8 @@ import HpImg1 from "../../public/hp-img-1.png";
 import HpImg2 from "../../public/hp-img-2.png";
 import HpImg3 from "../../public/hp-img-3.png";
 
+import CheckIcon from "../../public/check-icon.svg";
+
 export {
   HeaderHero,
   AppLogo,
@@ -43,4 +45,5 @@ export {
   HpImg1,
   HpImg2,
   HpImg3,
+  CheckIcon,
 };
