@@ -70,7 +70,7 @@ const AppSubmit = () => {
       <AnimatePresence>
         {isSubmitted && (
           <Container>
-            <div className="fixed z-50 inset-0 flex justify-center items-center ">
+            <div className="fixed z-50 inset-0 flex justify-center items-center overflow-y-scroll">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
