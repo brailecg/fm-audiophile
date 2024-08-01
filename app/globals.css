@@ -21,3 +21,29 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+.header-title-text {
+  animation-name: scale-in;
+  animation-duration: 1s;
+}
+@keyframes scale-in {
+  0% {
+    scale: 0%;
+  }
+  100% {
+    scale: 100%;
+  }
+}
+
+.header-btn {
+  animation-name: opacity-in;
+  animation-duration: 3s;
+}
+@keyframes opacity-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -25,7 +25,10 @@ export function AppButton({
   className = cn(variantStyles[variant], className);
 
   return typeof props.href === "undefined" ? (
-    <button className={className} {...props} />
+    <button
+      className={cn("hover:scale-110 transition", className)}
+      {...props}
+    />
   ) : (
     <Link className={className} {...props} />
   );

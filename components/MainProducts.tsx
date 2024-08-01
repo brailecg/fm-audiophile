@@ -5,20 +5,21 @@ import { AppButton } from "./AppButton";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Earphones, Headphones, Speakers } from "./public-images";
 import { cn } from "@/lib/utils";
+import AppMotionImage from "./AppMotionImage";
 
 const MainProduct = ({ image, name, link }: MainProductType) => {
   return (
     <AppButton
       href={link}
       className="group relative flex flex-col items-center bg-main-grey rounded-lg w-full h-44 py-6 md:max-w-full">
-      <div className="absolute -top-14 md:-top-20  w-[101px] md:w-[120px]">
+      <AppMotionImage className="absolute -top-14 md:-top-20  w-[101px] md:w-[120px]">
         <Image
           src={image}
           alt="EarPhone"
           sizes="(max-width: 768px) 101px,
            120px"
         />
-      </div>
+      </AppMotionImage>
       <div className="flex flex-col h-full justify-end gap-4">
         <p className=" text-app-body uppercase text-black">{name}</p>
         <div className="flex justify-center items-center">

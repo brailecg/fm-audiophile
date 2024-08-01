@@ -11,13 +11,13 @@ import {
 import React from "react";
 
 import { Container } from "@/components/Container";
-
 import AppCartCounter from "@/components/AppCartCounter";
 import { AppButton } from "@/components/AppButton";
-import Link from "next/link";
 import MainProducts from "@/components/MainProducts";
 import FooterAbout from "@/components/FooterAbout";
 import { numberToPrice } from "@/lib/utils";
+import AppMotionComponent from "@/components/AppMotionComponent";
+import AppMotionImage from "@/components/AppMotionImage";
 
 const itemSample = {
   id: crypto.randomUUID(),
@@ -81,7 +81,8 @@ const ProductHeadphone = () => {
           </AppButton>
         </div>
         <div className="flex flex-col gap-8 md:flex-row md:gap-16 lg:gap-32">
-          <div
+          <AppMotionImage
+            variant="opacityX"
             className={`bg-main-grey flex justify-center rounded-lg pb-16 pt-10 md:flex-1 `}>
             <div className=" w-[220px] lg:w-[345px]">
               <Image
@@ -92,8 +93,10 @@ const ProductHeadphone = () => {
 345px"
               />
             </div>
-          </div>
-          <div className="flex flex-col gap-6 md:flex-1 text-start ">
+          </AppMotionImage>
+          <AppMotionComponent
+            variant="opacityInX"
+            className="flex flex-col gap-6 md:flex-1 text-start ">
             {itemSample?.isNewProduct && (
               <p className=" text-app-overline text-main-orange">NEW PRODUCT</p>
             )}
@@ -101,11 +104,11 @@ const ProductHeadphone = () => {
             <p className=" text-black/50 text-sm leading-loose">
               {itemSample?.description}
             </p>
-            <div className=" font-semibold">
+            <span className=" font-semibold">
               {numberToPrice(itemSample?.price)}
-            </div>
+            </span>
             <AppCartCounter />
-          </div>
+          </AppMotionComponent>
         </div>
         <div className=" flex flex-col gap-12 lg:flex-row lg:gap-20">
           <div className=" lg:w-2/3 ">
@@ -136,27 +139,27 @@ const ProductHeadphone = () => {
         </div>
 
         <div className=" grid gap-6">
-          <div className="">
+          <AppMotionImage variant="opacityInX" className="">
             <Image
               src={HpImg1}
               alt="sample image"
               className={`rounded-lg h-full w-full object-cover`}
             />
-          </div>
-          <div className="">
+          </AppMotionImage>
+          <AppMotionImage variant="opacityInX" className="">
             <Image
               src={HpImg2}
               alt="sample image"
               className={`rounded-lg h-full w-full object-cover`}
             />
-          </div>
-          <div className="md:row-start-1 md:row-end-3 md:col-start-2 md:col-end-3">
+          </AppMotionImage>
+          <AppMotionImage className="md:row-start-1 md:row-end-3 md:col-start-2 md:col-end-3">
             <Image
               src={HpImg3}
               alt="sample image"
               className={`rounded-lg h-full w-full object-cover`}
             />
-          </div>
+          </AppMotionImage>
         </div>
         <div className="">
           <h5 className=" text-app-h5 uppercase text-center mb-8">
@@ -165,7 +168,7 @@ const ProductHeadphone = () => {
           <div className="flex flex-col gap-14 sm:flex-row sm:justify-between sm:gap-4">
             {youMayAlsoLikeSample.map((item) => {
               return (
-                <div
+                <AppMotionComponent
                   key={item?.id}
                   className=" flex flex-col items-center gap-5 w-full">
                   <div className="bg-main-grey flex justify-center items-center rounded-lg py-3 w-full max-w-96 sm:min-h-72">
@@ -183,7 +186,7 @@ const ProductHeadphone = () => {
                     className="uppercase min-w-40 min-h-12">
                     see product
                   </AppButton>
-                </div>
+                </AppMotionComponent>
               );
             })}
           </div>

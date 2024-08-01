@@ -77,11 +77,11 @@ const Nav = () => {
             <DeskTopLinks />
             <MobileLinks setIsNavOpen={setIsNavOpen} />
           </div>
-          <AppButton
-            onClick={() => setIsCartModalOpen((prev) => !prev)}
-            className="order-last flex-1    flex justify-end">
-            <Image src={CartIcon} alt="cart icon" />
-          </AppButton>
+          <div className="order-last flex-1  flex justify-end ">
+            <AppButton onClick={() => setIsCartModalOpen((prev) => !prev)}>
+              <Image src={CartIcon} alt="cart icon" />
+            </AppButton>
+          </div>
         </div>
       </Container>
 

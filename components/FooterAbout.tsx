@@ -2,16 +2,22 @@ import React from "react";
 import Image from "next/image";
 import { AudioGear, AudioGearSm } from "./public-images";
 import { cn } from "@/lib/utils";
+import AppMotionImage from "./AppMotionImage";
+import AppMotionComponent from "./AppMotionComponent";
 const FooterAbout = ({ className }: { className: string }) => {
   return (
     <div className={cn("flex flex-col lg:flex-row lg:gap-4", className)}>
-      <div className=" xs:hidden lg:flex lg:flex-1 lg:order-last lg:min-w-[50%]">
+      <AppMotionImage
+        variant="opacityY"
+        className=" xs:hidden lg:flex lg:flex-1 lg:order-last lg:min-w-[50%]">
         <Image src={AudioGear} alt="AudioGear" className="rounded-lg" />
-      </div>
-      <div className="hidden xs:flex lg:hidden">
+      </AppMotionImage>
+      <AppMotionImage variant="opacityY" className="hidden xs:flex lg:hidden">
         <Image src={AudioGearSm} alt="AudioGearSm" className="rounded-lg" />
-      </div>
-      <div className=" mt-8 flex flex-col gap-4 text-center lg:flex-1 lg:text-start lg:my-auto lg:max-w-[50%] lg:pr-24">
+      </AppMotionImage>
+      <AppMotionComponent
+        variant="opacityInX"
+        className=" mt-8 flex flex-col gap-4 text-center lg:flex-1 lg:text-start lg:my-auto lg:max-w-[50%] lg:pr-24">
         <h1 className="uppercase text-app-h4  xs:text-app-h3">
           Bringing you the <span className="text-main-orange">best</span> audio
           gear
@@ -24,7 +30,7 @@ const FooterAbout = ({ className }: { className: string }) => {
           store to meet some of the fantastic people who make Audiophile the
           best place to buy your portable audio equipment.
         </p>
-      </div>
+      </AppMotionComponent>
     </div>
   );
 };

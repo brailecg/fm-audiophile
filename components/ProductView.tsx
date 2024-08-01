@@ -4,12 +4,14 @@ import { ProductType } from "@/types/appTypes";
 import React from "react";
 import { AppButton } from "./AppButton";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import AppMotionComponent from "./AppMotionComponent";
 
 const ProductView = ({ item, idx }: { item: ProductType; idx: number }) => {
   const pathname = usePathname();
   return (
     <div className="flex flex-col gap-8 md:flex-row md:gap-16 lg:gap-32">
-      <div
+      <AppMotionComponent
         className={`bg-main-grey flex justify-center rounded-lg pb-16 pt-10 md:flex-1 ${
           idx % 2 !== 0 ? " order-last" : ""
         }`}>
@@ -22,8 +24,8 @@ const ProductView = ({ item, idx }: { item: ProductType; idx: number }) => {
    345px"
           />
         </div>
-      </div>
-      <div className="text-center  flex flex-col gap-6 md:flex-1 md:text-start md:justify-center ">
+      </AppMotionComponent>
+      <AppMotionComponent className="text-center  flex flex-col gap-6 md:flex-1 md:text-start md:justify-center ">
         {item?.isNewProduct && (
           <p className=" text-app-overline text-main-orange">NEW PRODUCT</p>
         )}
@@ -39,7 +41,7 @@ const ProductView = ({ item, idx }: { item: ProductType; idx: number }) => {
             SEE PRODUCT
           </AppButton>
         </div>
-      </div>
+      </AppMotionComponent>
     </div>
   );
 };
