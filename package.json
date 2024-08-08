@@ -7,8 +7,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
-    "@supabase/ssr": "latest",
-    "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.17",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.17",
