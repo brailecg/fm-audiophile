@@ -17,7 +17,7 @@ import AppImageGallery from "@/components/AppImageGallery";
 import AppProductDetails from "@/components/AppProductDetails";
 import AppLoadingIcon from "@/components/AppLoadingIcon";
 
-const ProductHeadphone = () => {
+const ProductEarphone = () => {
   const [product, setProduct] = useState<ProductType>();
   const pathname = usePathname();
   const segments = pathname.split("/");
@@ -61,4 +61,4 @@ const ProductHeadphone = () => {
   );
 };
 
-export default ProductHeadphone;
+export default ProductEarphone;

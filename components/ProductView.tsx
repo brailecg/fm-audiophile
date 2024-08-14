@@ -4,7 +4,6 @@ import { ProductType } from "@/types/appTypes";
 import React from "react";
 import { AppButton } from "./AppButton";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import AppMotionComponent from "./AppMotionComponent";
 
 const ProductView = ({ item, idx }: { item: ProductType; idx: number }) => {
@@ -13,20 +12,26 @@ const ProductView = ({ item, idx }: { item: ProductType; idx: number }) => {
     <div className="flex flex-col gap-8 md:flex-row md:gap-16 lg:gap-32">
       <AppMotionComponent
         className={`bg-main-grey flex justify-center rounded-lg pb-16 pt-10 md:flex-1 ${
-          idx % 2 !== 0 ? " order-last" : ""
+          idx % 2 !== 0 ? " md:order-last" : ""
         }`}>
         <div className=" w-[220px] lg:w-[345px]">
           <Image
-            src={item?.image}
-            alt="Headphones Mark 2"
+            src={
+              process.env.NEXT_PUBLIC_PRODUCT_IMAGE_BASE_URL +
+              "/" +
+              item?.product_images?.desktop
+            }
+            alt={item?.name as string}
             className="rounded-lg"
-            sizes="(max-width: 1024px) 220px,
-   345px"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
       </AppMotionComponent>
       <AppMotionComponent className="text-center  flex flex-col gap-6 md:flex-1 md:text-start md:justify-center ">
-        {item?.isNewProduct && (
+        {item?.is_new_product && (
           <p className=" text-app-overline text-main-orange">NEW PRODUCT</p>
         )}
         <h4 className=" text-app-h4">{item?.name}</h4>
@@ -35,7 +40,7 @@ const ProductView = ({ item, idx }: { item: ProductType; idx: number }) => {
         </p>
         <div>
           <AppButton
-            href={`${pathname}/${item?.id}`}
+            href={`${pathname}/${item?.product_id}`}
             variant="primary"
             className="text-white py-4 px-8 flex-">
             SEE PRODUCT

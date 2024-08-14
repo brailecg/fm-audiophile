@@ -13,7 +13,11 @@ const FooterAbout = ({ className }: { className: string }) => {
         <Image src={AudioGear} alt="AudioGear" className="rounded-lg" />
       </AppMotionImage>
       <AppMotionImage variant="opacityY" className="hidden xs:flex lg:hidden">
-        <Image src={AudioGearSm} alt="AudioGearSm" className="rounded-lg" />
+        <Image
+          src={AudioGearSm}
+          alt="AudioGearSm"
+          className="rounded-lg mx-auto"
+        />
       </AppMotionImage>
       <AppMotionComponent
         variant="opacityInX"

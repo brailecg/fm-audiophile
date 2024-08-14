@@ -18,6 +18,7 @@ const MainProduct = ({ image, name, link }: MainProductType) => {
           alt="EarPhone"
           sizes="(max-width: 768px) 101px,
            120px"
+          className=" group-hover:scale-125 group-hover:transition-all"
         />
       </AppMotionImage>
       <div className="flex flex-col h-full justify-end gap-4">
@@ -40,9 +41,9 @@ const MainProducts = ({ className }: { className: string }) => {
         "flex flex-col gap-20 sm:flex-row sm:gap-4 items-center justify-center",
         className
       )}>
-      <MainProduct image={Earphones} name="Earphones" link="#" />
-      <MainProduct image={Headphones} name="Headphones" link="#" />
-      <MainProduct image={Speakers} name="Speakers" link="#" />
+      <MainProduct image={Earphones} name="Earphones" link="../earphones" />
+      <MainProduct image={Headphones} name="Headphones" link="../headphones" />
+      <MainProduct image={Speakers} name="Speakers" link="../speakers" />
     </div>
   );
 };

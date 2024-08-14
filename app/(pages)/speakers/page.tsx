@@ -1,7 +1,34 @@
+import PageHeader from "@/components/PageHeader";
 import React from "react";
+import { ProductType } from "@/types/appTypes";
 
-const Speakers = () => {
-  return <div>Speakers</div>;
+import { Container } from "@/components/Container";
+import MainProducts from "@/components/MainProducts";
+import FooterAbout from "@/components/FooterAbout";
+import ProductView from "@/components/ProductView";
+import { getProductsByCategory } from "@/utils/server";
+
+const Speakers = async () => {
+  const speakersList = await getProductsByCategory({
+    category: "speakers",
+  });
+
+  return (
+    <div>
+      <PageHeader>SPEAKERS</PageHeader>
+      <Container className=" mt-16">
+        <div className=" grid gap-24 lg:gap-40">
+          {speakersList.map((item: ProductType, idx: number) => (
+            <React.Fragment key={item?.product_id}>
+              <ProductView item={item} idx={idx} />
+            </React.Fragment>
+          ))}
+        </div>
+        <MainProducts className=" my-32 md:my-44" />
+        <FooterAbout className="mb-24 md:mb-44 md:mt-44" />
+      </Container>
+    </div>
+  );
 };
 
 export default Speakers;
