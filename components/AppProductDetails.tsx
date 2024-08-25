@@ -11,6 +11,7 @@ const AppProductDetails = ({ product }: { product: ProductType }) => {
   const handleGoBack = () => {
     history.back();
   };
+
   return (
     <React.Fragment>
       <div className=" mt-8">
@@ -55,7 +56,7 @@ const AppProductDetails = ({ product }: { product: ProductType }) => {
                 : 0
             )}
           </span>
-          <AppCartCounter />
+          <AppCartCounter product={product} />
         </AppMotionComponent>
       </div>
       <div className=" flex flex-col gap-12 lg:flex-row lg:gap-20">

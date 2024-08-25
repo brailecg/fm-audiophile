@@ -26,7 +26,7 @@ export type InTheBox = {
   units: string;
 };
 
-export type ProductType = null | {
+export type ProductType = {
   product_id: string;
   is_new_product: boolean;
   name: string;
@@ -39,6 +39,10 @@ export type ProductType = null | {
   featured_images: ProductImage;
   products_skus: ProductSku;
   gallery_images: GalleryImage;
+};
+
+export type CartProductType = ProductType & {
+  product_count: number;
 };
 
 export type FeaturedProductType = {

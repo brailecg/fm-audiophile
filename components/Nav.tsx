@@ -14,9 +14,8 @@ import {
 } from "./public-images";
 import { AppButton } from "./AppButton";
 import PageLinks from "./PageLinks";
-import AppProduct from "./AppCartProducts";
-import { numberToPrice } from "@/lib/utils";
 import CartDialog from "./CartDialog";
+import CartComponent from "./CartComponent";
 
 const DeskTopLinks = () => {
   return <PageLinks className="hidden md:flex gap-2 lg:gap-4" />;
@@ -64,7 +63,6 @@ const MobileNavLinks = ({ image, name, link }: MobileNavLinksType) => {
 
 const Nav = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
-  const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -77,10 +75,8 @@ const Nav = () => {
             <DeskTopLinks />
             <MobileLinks setIsNavOpen={setIsNavOpen} />
           </div>
-          <div className="order-last flex-1  flex justify-end ">
-            <AppButton onClick={() => setIsCartModalOpen((prev) => !prev)}>
-              <Image src={CartIcon} alt="cart icon" />
-            </AppButton>
+          <div className=" order-last flex-1">
+            <CartComponent />
           </div>
         </div>
       </Container>
@@ -101,11 +97,6 @@ const Nav = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <CartDialog
-        isCartModalOpen={isCartModalOpen}
-        setIsCartModalOpen={setIsCartModalOpen}
-      />
     </>
   );
 };
