@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { AppButton } from "./AppButton";
 import { CartIcon } from "./public-images";
@@ -7,7 +7,6 @@ import { Container } from "./Container";
 import { useCartDataStore } from "@/app/store";
 
 const CartComponent = () => {
-  const currentCartData = useCartDataStore((state) => state.cartDataArray);
   const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
   const cartStoreData = useCartDataStore((state) => state.cartDataArray);
 

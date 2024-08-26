@@ -27,7 +27,7 @@ const ProductSpeaker = () => {
     const fetchProduct = async () => {
       try {
         const productItem = await getProductById({ id: productId });
-        console.log(productItem[0]);
+
         setProduct(productItem[0]);
       } catch (error) {
         console.error("Failed to fetch product:", error);

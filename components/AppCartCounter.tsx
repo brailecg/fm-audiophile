@@ -6,6 +6,46 @@ import { cn } from "@/lib/utils";
 import { useCartDataStore } from "@/app/store";
 import { CartProductType, ProductType } from "@/types/appTypes";
 
+export const handleUpdateCart = ({
+  product,
+  itemCount,
+  cartStoreData,
+  updateCartStoreData,
+}: {
+  product: ProductType;
+  itemCount: number;
+  cartStoreData: CartProductType[];
+  updateCartStoreData: (cartStoreData: CartProductType[]) => void;
+}) => {
+  const cartProduct: CartProductType = {
+    ...(product as ProductType),
+    product_count: itemCount,
+  };
+
+  const checkIfItemInCart = cartStoreData.find(
+    (item) => item.product_id === cartProduct.product_id
+  );
+
+  if (checkIfItemInCart) {
+    // if item is already in cart, replace it with the update cart with the updated item count
+    const newCartData = cartStoreData.flatMap((item) => {
+      if (item.product_id === cartProduct.product_id) {
+        if (cartProduct.product_count !== 0) return cartProduct;
+        return [];
+      } else {
+        return item;
+      }
+    });
+
+    updateCartStoreData(newCartData as unknown as CartProductType[]);
+  } else {
+    // if item is not in cart, just add it to the existing cart
+    updateCartStoreData([...cartStoreData, cartProduct]);
+  }
+
+  // do the server action here:
+};
+
 const AppCartCounter = ({ product }: { product: ProductType }) => {
   const [itemCount, setItemCount] = useState<number>(1);
   const cartStoreData = useCartDataStore((state) => state.cartDataArray);
@@ -14,25 +54,12 @@ const AppCartCounter = ({ product }: { product: ProductType }) => {
   );
 
   const handleAddToCart = () => {
-    const cartProduct: CartProductType = {
-      ...(product as ProductType),
-      product_count: itemCount,
-    };
-    const checkIfItemInCart = cartStoreData.find(
-      (item) => item.product_id === cartProduct.product_id
-    );
-
-    if (checkIfItemInCart) {
-      // if item is already in cart, replace it with the update cart with the updated item count
-      const newCartData = cartStoreData.map((item) => {
-        if (item.product_id === cartProduct.product_id) return cartProduct;
-        return item;
-      });
-      updateCartStoreData(newCartData);
-    } else {
-      // if item is not in cart, just add it to the existing cart
-      updateCartStoreData([...cartStoreData, cartProduct]);
-    }
+    handleUpdateCart({
+      product,
+      itemCount,
+      cartStoreData,
+      updateCartStoreData,
+    });
   };
   return (
     <div className="flex gap-4 xs:max-w-[75%] md:max-w-full">

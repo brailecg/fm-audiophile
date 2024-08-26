@@ -1,51 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import {
-  HeadphonesMark1,
-  HeadphonesMark2,
-  HeadphonesXx59,
-} from "./public-images";
 import AppCounterInput from "./AppCounterInput";
 import { numberToPrice } from "@/lib/utils";
 import { cn } from "@/lib/utils";
-import { useCartDataStore } from "@/app/store";
 import { CartProductType } from "@/types/appTypes";
-
-const productsInCart = [
-  {
-    id: crypto.randomUUID(),
-    isNewProduct: true,
-    name: "XX99 Mark II",
-    description:
-      "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
-    image: HeadphonesMark2,
-    price: 2999,
-    cartCount: 3,
-    isAvailable: true,
-  },
-  {
-    id: crypto.randomUUID(),
-    isNewProduct: false,
-    name: "XX99 Mark I",
-    description:
-      "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.",
-    image: HeadphonesMark1,
-    price: 2792349,
-    cartCount: 3,
-    isAvailable: true,
-  },
-  {
-    id: crypto.randomUUID(),
-    isNewProduct: false,
-    name: "XX59",
-    description:
-      "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
-    image: HeadphonesXx59,
-    price: 28.9,
-    cartCount: 3,
-    isAvailable: true,
-  },
-];
 
 const AppCartProducts = ({
   cartStoreData,
@@ -59,10 +17,13 @@ const AppCartProducts = ({
   return (
     <ul className={cn("grid gap-3", className)}>
       {cartStoreData?.map((item) => {
+        const imageName = item.product_images.mobile
+          ? item.product_images.mobile
+          : item.product_images.tablet
+          ? item.product_images.tablet
+          : item.product_images.desktop;
         const itemImage =
-          process.env.NEXT_PUBLIC_PRODUCT_IMAGE_BASE_URL +
-          "/" +
-          item?.product_images.desktop;
+          process.env.NEXT_PUBLIC_PRODUCT_IMAGE_BASE_URL + "/" + imageName;
         return (
           <li key={item?.name} className="text-black gap-2 grid grid-cols-4">
             <div className="flex gap-4 col-span-3">
@@ -92,7 +53,13 @@ const AppCartProducts = ({
                 </div>
               ) : (
                 <div className="flex items-center">
-                  <AppCounterInput className="" />
+                  <AppCounterInput
+                    productDetail={{
+                      productCount: item.product_count,
+                      product: item,
+                    }}
+                    className=""
+                  />
                 </div>
               )}
             </div>

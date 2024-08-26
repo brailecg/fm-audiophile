@@ -5,16 +5,10 @@ import Image, { StaticImageData } from "next/image";
 import { Bars3Icon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import { Container } from "./Container";
-import {
-  AppLogo,
-  CartIcon,
-  Earphones,
-  Headphones,
-  Speakers,
-} from "./public-images";
+import { AppLogo, Earphones, Headphones, Speakers } from "./public-images";
 import { AppButton } from "./AppButton";
 import PageLinks from "./PageLinks";
-import CartDialog from "./CartDialog";
+
 import CartComponent from "./CartComponent";
 
 const DeskTopLinks = () => {

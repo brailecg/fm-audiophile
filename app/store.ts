@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { CartProductType } from "@/types/appTypes";
 
-type CartDataState = {
+export type CartDataState = {
   cartDataArray: CartProductType[];
 };
 
-type LinkDataAction = {
+export type LinkDataAction = {
   updateCartDataArray: (cartDataArray: CartDataState["cartDataArray"]) => void;
 };
 
