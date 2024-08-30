@@ -5,11 +5,29 @@ import { CartIcon } from "./public-images";
 import CartDialog from "./CartDialog";
 import { Container } from "./Container";
 import { useCartDataStore } from "@/app/store";
+import { getCartItemByProfileId } from "@/utils/server";
 
 const CartComponent = () => {
   const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
   const cartStoreData = useCartDataStore((state) => state.cartDataArray);
+  const udpateCartData = useCartDataStore((state) => state.updateCartDataArray);
 
+  // do a use effect to get all the cart from db
+  let updateCartCalled = false;
+  useEffect(() => {
+    async function callCartApi() {
+      if (!updateCartCalled) {
+        const getCart = await getCartItemByProfileId({
+          profileId: "70ab2eb7-ba5e-4ce7-b126-ef9ee14f3ee1",
+        });
+        console.log({ getCart });
+        udpateCartData(getCart[0].cart_items);
+        updateCartCalled = true;
+        // get all cart data for this user
+      }
+    }
+    callCartApi();
+  }, []);
   return (
     <React.Fragment>
       <div className="relative flex justify-end ">

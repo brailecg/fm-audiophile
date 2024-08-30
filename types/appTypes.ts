@@ -41,8 +41,13 @@ export type ProductType = {
   gallery_images: GalleryImage;
 };
 
-export type CartProductType = ProductType & {
-  product_count: number;
+export type CartProductType = {
+  cart_item_id?: string;
+  cart_id?: string;
+  product_id?: string;
+  cart_item_qty: number;
+  cart_item_price: number;
+  products: ProductType;
 };
 
 export type FeaturedProductType = {

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { useCartDataStore } from "@/app/store";
 import { CartProductType } from "@/types/appTypes";
 import { handleUpdateCart } from "./AppCartCounter";
+import { handleCartDbUpdate } from "@/utils/server";
 
 type ProductDetailType = {
   productCount: number;
@@ -17,7 +18,7 @@ const AppCounterInput = ({
   productDetail,
 }: {
   className?: string;
-  productDetail: ProductDetailType;
+  productDetail: CartProductType;
 }) => {
   const cartStoreData = useCartDataStore((state) => state.cartDataArray);
   const updateCartStoreData = useCartDataStore(
@@ -25,7 +26,7 @@ const AppCounterInput = ({
   );
 
   const [itemCount, setItemCount] = useState<number>(
-    productDetail?.productCount
+    productDetail?.cart_item_qty
   );
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,11 +46,15 @@ const AppCounterInput = ({
       updatedItemCount = itemCount + 1;
     }
     setItemCount(updatedItemCount);
-    handleUpdateCart({
-      product: productDetail.product,
+    const updatedCartData = handleUpdateCart({
+      product: productDetail.products,
       itemCount: updatedItemCount,
       cartStoreData,
       updateCartStoreData,
+    });
+    handleCartDbUpdate({
+      cartId: updatedCartData.cartId,
+      cartData: updatedCartData.newCartData,
     });
   };
 

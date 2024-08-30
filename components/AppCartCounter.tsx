@@ -5,6 +5,7 @@ import { AppInput } from "./AppInput";
 import { cn } from "@/lib/utils";
 import { useCartDataStore } from "@/app/store";
 import { CartProductType, ProductType } from "@/types/appTypes";
+import { handleCartDbUpdate } from "@/utils/server";
 
 export const handleUpdateCart = ({
   product,
@@ -18,31 +19,38 @@ export const handleUpdateCart = ({
   updateCartStoreData: (cartStoreData: CartProductType[]) => void;
 }) => {
   const cartProduct: CartProductType = {
-    ...(product as ProductType),
-    product_count: itemCount,
+    product_id: product.product_id,
+    cart_item_qty: itemCount,
+    cart_item_price: product.products_skus.product_price,
+    products: product,
   };
-
+  const cartId =
+    cartStoreData.length > 0 ? cartStoreData[0]?.cart_id : undefined;
   const checkIfItemInCart = cartStoreData.find(
     (item) => item.product_id === cartProduct.product_id
   );
-
+  let newCartData: CartProductType[];
   if (checkIfItemInCart) {
     // if item is already in cart, replace it with the update cart with the updated item count
-    const newCartData = cartStoreData.flatMap((item) => {
+    newCartData = cartStoreData.flatMap((item) => {
       if (item.product_id === cartProduct.product_id) {
-        if (cartProduct.product_count !== 0) return cartProduct;
+        if (cartProduct.cart_item_qty !== 0)
+          return {
+            ...item,
+            cart_item_qty: cartProduct.cart_item_qty,
+            cart_item_price: cartProduct.cart_item_price,
+          };
         return [];
       } else {
         return item;
       }
     });
-
-    updateCartStoreData(newCartData as unknown as CartProductType[]);
   } else {
     // if item is not in cart, just add it to the existing cart
-    updateCartStoreData([...cartStoreData, cartProduct]);
+    newCartData = [...cartStoreData, { ...cartProduct, cart_id: cartId }];
   }
-
+  updateCartStoreData(newCartData);
+  return { cartId, newCartData };
   // do the server action here:
 };
 
@@ -54,11 +62,15 @@ const AppCartCounter = ({ product }: { product: ProductType }) => {
   );
 
   const handleAddToCart = () => {
-    handleUpdateCart({
+    const updatedCartData = handleUpdateCart({
       product,
       itemCount,
       cartStoreData,
       updateCartStoreData,
+    });
+    handleCartDbUpdate({
+      cartId: updatedCartData.cartId,
+      cartData: updatedCartData.newCartData,
     });
   };
   return (

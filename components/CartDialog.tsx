@@ -19,7 +19,7 @@ const CartDialog = ({
 
   const cartItemTotal = cartStoreData.reduce(
     (total, itemTotal) =>
-      total + itemTotal.product_count * itemTotal.products_skus.product_price,
+      total + itemTotal.cart_item_qty * itemTotal.cart_item_price,
     0
   );
 
