@@ -1,16 +1,10 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
-import AppCartCounter from "@/components/AppCartCounter";
-import { AppButton } from "@/components/AppButton";
 import MainProducts from "@/components/MainProducts";
 import FooterAbout from "@/components/FooterAbout";
-import { numberToPrice } from "@/lib/utils";
-import AppMotionComponent from "@/components/AppMotionComponent";
-import AppMotionImage from "@/components/AppMotionImage";
 import { getProductById } from "@/utils/server";
 import { ProductType } from "@/types/appTypes";
 import AppImageGallery from "@/components/AppImageGallery";

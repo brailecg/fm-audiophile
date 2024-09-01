@@ -91,10 +91,34 @@ export const handleCartDbUpdate = async ({
       headers: { "Content-Type": "application/json" },
     });
   }
-  // "cart_item_id": "0a0084de-0c1a-46da-b948-ae392dcb8aff",
-  // "cart_id": "bd8b52f6-77d2-42c7-b5fa-9f3ebf76ffc5",
-  // "product_id": "043cf228-7632-4310-8d09-0196587ac8c3",
-  // "cart_item_qty": 69,
-  // "cart_item_price": 700
-  console.log("cart update server");
+};
+
+export const handleRemoveItemFromCart = async (itemId: string | undefined) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/carts/item/${itemId}` as string,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+
+        cache: "no-store",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Failed to delete item" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 };

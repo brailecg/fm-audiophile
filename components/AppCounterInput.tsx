@@ -47,7 +47,7 @@ const AppCounterInput = ({
     }
     setItemCount(updatedItemCount);
     const updatedCartData = handleUpdateCart({
-      product: productDetail.products,
+      product: productDetail,
       itemCount: updatedItemCount,
       cartStoreData,
       updateCartStoreData,

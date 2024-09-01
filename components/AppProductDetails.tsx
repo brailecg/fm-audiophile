@@ -4,12 +4,19 @@ import AppMotionImage from "./AppMotionImage";
 import AppMotionComponent from "./AppMotionComponent";
 import AppCartCounter from "./AppCartCounter";
 import { numberToPrice } from "@/lib/utils";
-import { ProductType } from "@/types/appTypes";
+import { CartProductType, ProductType } from "@/types/appTypes";
 import { AppButton } from "./AppButton";
 
 const AppProductDetails = ({ product }: { product: ProductType }) => {
   const handleGoBack = () => {
     history.back();
+  };
+
+  const cartProduct: CartProductType = {
+    cart_item_price: product.products_skus.product_price,
+    cart_item_qty: product.products_skus.product_qty,
+    product_id: product.product_id,
+    products: product,
   };
 
   return (
@@ -56,7 +63,7 @@ const AppProductDetails = ({ product }: { product: ProductType }) => {
                 : 0
             )}
           </span>
-          <AppCartCounter product={product} />
+          <AppCartCounter product={cartProduct} />
         </AppMotionComponent>
       </div>
       <div className=" flex flex-col gap-12 lg:flex-row lg:gap-20">

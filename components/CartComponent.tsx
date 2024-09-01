@@ -20,8 +20,8 @@ const CartComponent = () => {
         const getCart = await getCartItemByProfileId({
           profileId: "70ab2eb7-ba5e-4ce7-b126-ef9ee14f3ee1",
         });
-        console.log({ getCart });
-        udpateCartData(getCart[0].cart_items);
+
+        udpateCartData(getCart[0]?.cart_items);
         updateCartCalled = true;
         // get all cart data for this user
       }
@@ -32,7 +32,7 @@ const CartComponent = () => {
     <React.Fragment>
       <div className="relative flex justify-end ">
         <div className=" absolute bg-main-orange size-5 rounded-full flex justify-center items-center -top-2 -right-2 sm:-top-4 sm:-right-4 text-xs">
-          {cartStoreData.length}
+          {cartStoreData?.length !== undefined ? cartStoreData.length : 0}
         </div>
         <AppButton onClick={() => setIsCartModalOpen((prev) => !prev)}>
           <Image src={CartIcon} alt="cart icon" />

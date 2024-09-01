@@ -17,11 +17,14 @@ const CartDialog = ({
 
   const cartStoreData = useCartDataStore((state) => state.cartDataArray);
 
-  const cartItemTotal = cartStoreData.reduce(
-    (total, itemTotal) =>
-      total + itemTotal.cart_item_qty * itemTotal.cart_item_price,
-    0
-  );
+  const cartItemTotal =
+    cartStoreData !== undefined
+      ? cartStoreData.reduce(
+          (total, itemTotal) =>
+            total + itemTotal.cart_item_qty * itemTotal.cart_item_price,
+          0
+        )
+      : 0;
 
   const handleUpdateCart = () => {
     setIsCartModalOpen(false);
