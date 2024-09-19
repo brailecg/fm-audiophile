@@ -61,3 +61,25 @@ export type MainProductType = {
   name: string;
   link: string;
 };
+
+type OrderFeesType = {
+  name: string;
+  value: number;
+};
+
+type OrderDiscountType = {
+  name: string;
+  value: number;
+};
+
+type PaymentDetailsType = {
+  name: string;
+};
+
+export type OrderDetailsType = {
+  order_fees: OrderFeesType;
+  order_discounts: OrderDiscountType;
+  order_items_total: number;
+  order_grand_total: number;
+  payment_details: PaymentDetailsType;
+};

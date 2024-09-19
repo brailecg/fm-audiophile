@@ -1,4 +1,4 @@
-import { CartProductType } from "@/types/appTypes";
+import { CartProductType, OrderDetailsType } from "@/types/appTypes";
 
 const getApiWrapper = async ({ path }: { path: string }) => {
   try {
@@ -51,8 +51,6 @@ export const getCartItemByProfileId = ({
 }) => {
   return getApiWrapper({ path: `/carts/user/${profileId}` });
 };
-
-export const cartActions = async () => {};
 
 export const handleCartDbUpdate = async ({
   cartId,
@@ -117,6 +115,49 @@ export const handleRemoveItemFromCart = async (itemId: string | undefined) => {
     return data;
   } catch (error) {
     return new Response(JSON.stringify({ error: "Failed to delete item" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+};
+
+export const handleSubmitOrder = async ({
+  profileId,
+  cartData,
+  orderDetails,
+}: {
+  profileId: string;
+  cartData: CartProductType[];
+  orderDetails: OrderDetailsType;
+}) => {
+  /**
+   * 1. create order
+   * 2. create order items from cart
+   * 3. delete related cart
+   */
+
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/orders/${profileId}` as string,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cartData, orderDetails }),
+        cache: "no-store",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });

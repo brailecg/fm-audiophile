@@ -5,6 +5,20 @@ import { numberToPrice } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import AppCartProducts from "./AppCartProducts";
 import { useCartDataStore } from "@/app/store";
+import { CartProductType } from "@/types/appTypes";
+
+export const getCartItemTotal = (cartStoreData: CartProductType[]) => {
+  const cartItemTotal =
+    cartStoreData !== undefined
+      ? cartStoreData.reduce(
+          (total, itemTotal) =>
+            total + itemTotal.cart_item_qty * itemTotal.cart_item_price,
+          0
+        )
+      : 0;
+
+  return cartItemTotal;
+};
 
 const CartDialog = ({
   isCartModalOpen,
@@ -17,14 +31,7 @@ const CartDialog = ({
 
   const cartStoreData = useCartDataStore((state) => state.cartDataArray);
 
-  const cartItemTotal =
-    cartStoreData !== undefined
-      ? cartStoreData.reduce(
-          (total, itemTotal) =>
-            total + itemTotal.cart_item_qty * itemTotal.cart_item_price,
-          0
-        )
-      : 0;
+  const cartItemTotal = getCartItemTotal(cartStoreData);
 
   const handleUpdateCart = () => {
     setIsCartModalOpen(false);
@@ -50,7 +57,10 @@ const CartDialog = ({
             className="text-white absolute z-50 w-full max-w-[377px] min-h-[488px] top-0 right-0 bg-[#FFFFFF] rounded-lg p-8 flex flex-col gap-8">
             <div className="flex justify-between">
               <h3 className=" text-app-h5 text-black">
-                CART <span>({cartStoreData.length})</span>
+                CART{" "}
+                <span>
+                  ({cartStoreData?.length ? cartStoreData?.length : 0})
+                </span>
               </h3>
               <AppButton className=" text-black/50 hover:underline">
                 Remove All

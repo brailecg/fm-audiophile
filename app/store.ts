@@ -1,15 +1,15 @@
 import { create } from "zustand";
 import { CartProductType } from "@/types/appTypes";
 
-export type CartDataState = {
+type CartDataState = {
   cartDataArray: CartProductType[];
 };
 
-export type LinkDataAction = {
+type UpdateCartAction = {
   updateCartDataArray: (cartDataArray: CartDataState["cartDataArray"]) => void;
 };
 
-export const useCartDataStore = create<CartDataState & LinkDataAction>(
+export const useCartDataStore = create<CartDataState & UpdateCartAction>(
   (set) => ({
     cartDataArray: [],
     updateCartDataArray: (cartDataArray) =>
@@ -17,17 +17,26 @@ export const useCartDataStore = create<CartDataState & LinkDataAction>(
   })
 );
 
-/**
- * What the cart store needs
- * 1. number of items or total_item_count
- * 2. items list
- * 3. total_amount of current user
- */
+type PaymentDetailType = {
+  name?: string;
+  paymentType?: CodDetailType | EmoneyDetailType;
+};
+type CodDetailType = {
+  name: string;
+};
+type EmoneyDetailType = {
+  name: string;
+  emoneyNumber: number;
+  emoneyPin: string;
+};
 
-// export const useLinkDataStore = create<LinkDataState & LinkDataAction>(
-//     (set) => ({
-//       linkDataArray: [],
-//       updateLinkDataArray: (linkDataArray) =>
-//         set(() => ({ linkDataArray: linkDataArray })),
-//     })
-//   );
+type UpdatePaymentDetailsType = {
+  updatePaymentDetails: (pymntDetails: PaymentDetailType) => void;
+};
+
+export const usePaymentDetailsStore = create<
+  PaymentDetailType & UpdatePaymentDetailsType
+>((set) => ({
+  paymentDetails: {},
+  updatePaymentDetails: (paymntDetails) => set(() => paymntDetails),
+}));

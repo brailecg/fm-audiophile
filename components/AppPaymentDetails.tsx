@@ -1,11 +1,26 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import AppRadioBtn from "./AppRadioBtn";
 import AppLabeledInput from "./AppLabeledInput";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePaymentDetailsStore } from "@/app/store";
 
 const AppPaymentDetails = () => {
   const [pymtMethod, setPymtMethod] = useState<string>("cod");
+
+  const paymentDetails = usePaymentDetailsStore((state) => state);
+  const updatePymtDetails = usePaymentDetailsStore(
+    (state) => state.updatePaymentDetails
+  );
+
+  const handleSetPymtMethod = (e: ChangeEvent<HTMLInputElement>) => {
+    setPymtMethod(e.target.value);
+  };
+
+  const handleEmoneyInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log({ val: e.target.value });
+  };
+
   return (
     <div>
       <h5 className="  text-main-orange font-semibold mb-7">PAYMENT DETAILS</h5>
@@ -15,7 +30,7 @@ const AppPaymentDetails = () => {
           <div className=" flex flex-col gap-4">
             <div className=" flex flex-col gap-4">
               <AppRadioBtn
-                onChange={() => setPymtMethod("emoney")}
+                onChange={handleSetPymtMethod}
                 value="emoney"
                 label="e-Money"
                 id="emoney"
@@ -23,7 +38,7 @@ const AppPaymentDetails = () => {
               />
               <AppRadioBtn
                 defaultChecked
-                onChange={() => setPymtMethod("cod")}
+                onChange={handleSetPymtMethod}
                 value="cod"
                 label="Cash on Delivery"
                 id="cod"
@@ -32,28 +47,31 @@ const AppPaymentDetails = () => {
             </div>
           </div>
         </div>
-        <AnimatePresence>
-          {pymtMethod === "emoney" && (
+
+        {pymtMethod === "emoney" && (
+          <AnimatePresence>
             <motion.div
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 100 }}
               className="grid sm:grid-cols-2 gap-6 w-full">
               <AppLabeledInput
+                onChange={handleEmoneyInputChange}
                 type="number"
-                label="e-Money Nuber"
+                label="e-Money Number"
                 placeholder="9957423132"
                 inputId="emoneyNumber"
               />
               <AppLabeledInput
+                onChange={handleEmoneyInputChange}
                 type="number"
                 label="e-Money Pin"
                 placeholder="123456"
                 inputId="emoneyPin"
               />
             </motion.div>
-          )}
-        </AnimatePresence>
+          </AnimatePresence>
+        )}
       </div>
     </div>
   );
