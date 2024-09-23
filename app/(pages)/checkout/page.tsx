@@ -14,7 +14,8 @@ import AppCartProducts from "@/components/AppCartProducts";
 import { numberToPrice } from "@/lib/utils";
 import { useCartDataStore } from "@/app/store";
 import { getCartItemTotal } from "@/components/CartDialog";
-import { handleSubmitOrder } from "@/utils/server";
+import { handleDeleteSubmittedCart, handleSubmitOrder } from "@/utils/server";
+import Loader from "@/components/Loader";
 
 const BillingInfo = ({ control }: { control: Control }) => {
   return (
@@ -251,6 +252,7 @@ const useSubmitAnimation = (isSubmitted: boolean) => {
 
 const Checkout = () => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const cartStoreData = useCartDataStore((state) => state.cartDataArray);
   const cartItemTotal = getCartItemTotal(
@@ -268,24 +270,39 @@ const Checkout = () => {
     formState: { errors },
     control,
   } = useForm();
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
+    setIsSubmitting(true);
     data = {
       ...data,
       order_fees: { vat: getVatValue, shippingFee: getShippingFee },
       order_items_total: cartItemTotal,
       order_grand_total: grandTotal,
     };
- 
-    const handleOrder = handleSubmitOrder({
+
+    const handleOrder = await handleSubmitOrder({
       profileId: "70ab2eb7-ba5e-4ce7-b126-ef9ee14f3ee1",
       cartData: cartStoreData,
       orderDetails: data,
     });
+    if (handleOrder[0].order_id) {
+      const handleDeletedCart = await handleDeleteSubmittedCart(
+        cartStoreData[0]?.cart_id
+      );
+
+      console.log({ handleDeletedCart });
+    }
+    setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
   return (
     <div className=" bg-[#F2F2F2] py-5">
+      {isSubmitting && (
+        <>
+          <div className="absolute z-20 inset-0 bg-white opacity-50 pointer-events-none"></div>
+          <Loader />
+        </>
+      )}
       <Container className=" mb-5">
         <div className="">
           <AppButton className=" text-black/50" href={"./"}>

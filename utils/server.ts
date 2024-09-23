@@ -163,3 +163,33 @@ export const handleSubmitOrder = async ({
     });
   }
 };
+
+export const handleDeleteSubmittedCart = async (cartId?: string) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/carts/${cartId}` as string,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+
+        cache: "no-store",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Failed to delete cart" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+};

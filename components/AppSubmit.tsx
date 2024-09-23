@@ -53,7 +53,6 @@ const AppSubmit = ({
           </div>
         </div>
         <AppButton
-          // onClick={handleSubmitOrder}
           form="checkout-form"
           variant="primary"
           className="w-full h-12 text-xs">
